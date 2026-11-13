@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Płot betonowy złoty dąb: szczegóły przęseł</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700&family=Source+Sans+3:wght@400;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="../shared.css">
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>Płot betonowy złoty dąb: szczegóły przęseł</h1>
+    <p class="lede">Warianty przęseł słupek – przęsło – słupek z desek betonowych 200 × 25 × 3,5 cm w kolorze złoty dąb. Wszystkie rysunki są w tej samej skali, wymiary w centymetrach.</p>
+    <div class="spec">
+      <span>deska <b>200 × 25 × 3,5 cm</b></span>
+      <span>waga <b>44 kg</b></span>
+      <span>słupek (założenie) <b>12 cm</b>, deska w rowku <b>4 cm</b></span>
+      <span>rozstaw osiowy <b>≈ 204 cm</b></span>
+    </div>
+    <nav class="topnav" aria-label="Sekcje">
+      <a href="../">Widok 3D i kosze</a>
+      <a href="./" aria-current="page">Szczegóły przęseł</a>
+    </nav>
+  </header>
+
+  <section>
+    <div class="sechead"><h2>Warianty</h2><p>Wysokość od spodu najniższej deski, bez podmurówki</p></div>
+    <div class="grid" id="variants"></div>
+  </section>
+
+
+  <section>
+    <div class="sechead"><h2>Przejście B → C: krótsze przęsło, skos tylko na górnej desce</h2><p>6 desek prostych skróconych do 167 cm, 7. cięta po przekątnej</p></div>
+    <div class="card"><div class="wide" id="transition3"></div></div>
+    <div class="cuts" id="cuts3"></div>
+    <ul class="note" id="notes3"></ul>
+  </section>
+
+  <section>
+    <div class="sechead"><h2>Odcinek: 2 × B, skos w górę, 1 × C, skos w dół, 2 × B, 2 × A</h2><p>Przejścia jako krótsze przęsło ze skosem na górnej desce, przewiń rysunek w poziomie</p></div>
+    <div class="card"><div class="wide long" id="run1"></div></div>
+    <div class="cuts" id="run1sum"></div>
+    <ul class="note" id="run1notes"></ul>
+  </section>
+
+  <section>
+    <div class="sechead"><h2>Własny układ</h2><p>Wpisz warstwy od dołu i dodaj do porównania</p></div>
+    <div class="cfg">
+      <form class="card" id="cfgForm" novalidate>
+        <div>
+          <label for="cfgName">Nazwa</label>
+          <input type="text" id="cfgName" value="G" maxlength="20">
+        </div>
+        <div>
+          <label for="cfgLayers">Warstwy od dołu</label>
+          <input type="text" id="cfgLayers" value="D D D D 5 D 5 D">
+          <p class="hint">D = deska 25 cm, liczba = prześwit w cm. Przykład układu B: D D D 10 D 10 D</p>
+          <p class="err" id="cfgErr" hidden></p>
+        </div>
+        <div class="row">
+          <div><label for="cfgFrom">Skos od (cm)</label><input type="number" id="cfgFrom" placeholder="brak" min="0"></div>
+          <div><label for="cfgTo">Skos do (cm)</label><input type="number" id="cfgTo" placeholder="brak" min="0"></div>
+        </div>
+        <p class="hint" style="margin-top:-4px">Opcjonalnie: górna krawędź cięta po skosie od lewego do prawego słupka.</p>
+        <div class="row" style="gap:8px">
+          <button type="submit">Dodaj do porównania</button>
+          <button type="button" class="ghost" id="cfgReset">Usuń własne układy</button>
+        </div>
+      </form>
+      <div id="cfgPreview"></div>
+    </div>
+  </section>
+
+  <footer>Wersja 71 · 13.11.2026 · deska i kolor: <a href="https://betonowe-drewno.com/ogrodzenia/" style="color:var(--accent)">betonowe-drewno.com</a> (złoty dąb), wcześniej <a href="https://drewvip.pl/472-4458-deska-do-ogrodzenia-200-cm-.html" style="color:var(--accent)">drewvip.pl</a></footer>
+</div>
+
+<script src="../shared.js"></script>
+<script src="przesla.js"></script>
+</body>
+</html>

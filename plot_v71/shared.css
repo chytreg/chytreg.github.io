@@ -1,0 +1,75 @@
+/* Layout: arkusz warsztatowy — nagłówek ze specyfikacją, siatka kart-rysunków w skali, szeroki rysunek przejścia, konfigurator na dole */
+:root {
+  --bg: #EDECE8;
+  --card: #F8F7F4;
+  --fg: #22201C;
+  --muted: #6C675F;
+  --line: #D5D0C6;
+  --accent: #8A5A2B;
+  --cut: #B23A2A;
+  --dim: #4A463F;
+  --f-display: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  --f-body: "Source Sans 3", "Segoe UI", Roboto, sans-serif;
+  --f-mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #1A1917; --card: #23221F; --fg: #ECE9E3; --muted: #A39E95; --line: #3A3833; --accent: #D29A5C; --cut: #E2705E; --dim: #C9C3B8; color-scheme: dark } }
+:root[data-theme="dark"] {
+  --bg: #1A1917; --card: #23221F; --fg: #ECE9E3; --muted: #A39E95; --line: #3A3833; --accent: #D29A5C; --cut: #E2705E; --dim: #C9C3B8; color-scheme: dark }
+* { box-sizing: border-box }
+body { background: var(--bg); color: var(--fg); font-family: var(--f-body); font-size: 16px; line-height: 1.55;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 28px 48px }
+.wrap { max-width: none; margin: 0 auto; display: grid; gap: 40px }
+h1, h2 { font-family: var(--f-display); font-weight: 700; letter-spacing: -0.01em; text-wrap: balance; margin: 0 }
+h1 { font-size: clamp(1.7rem, 4vw, 2.4rem) }
+h2 { font-size: 1.3rem }
+.lede { color: var(--muted); margin: 6px 0 0; max-width: 70ch }
+.spec { display: flex; flex-wrap: wrap; gap: 8px 22px; margin-top: 14px; font-family: var(--f-mono); font-size: .85rem; color: var(--dim) }
+.spec b { color: var(--fg); font-weight: 500 }
+section { display: grid; gap: 14px }
+.sechead { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 6px 16px; border-bottom: 1.5px solid var(--accent); padding-bottom: 8px }
+.sechead p { margin: 0; color: var(--muted); font-size: .92rem }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 16px }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 16px; display: grid; gap: 10px; min-width: 0; align-content: start }
+.card header { display: flex; justify-content: space-between; align-items: baseline; gap: 10px }
+.card h3 { font-family: var(--f-display); font-size: 1.05rem; margin: 0; font-weight: 700 }
+.card .h { font-family: var(--f-mono); font-weight: 500; color: var(--accent); font-size: 1.05rem; white-space: nowrap }
+.card .sub { color: var(--muted); font-size: .9rem; margin: -6px 0 0 }
+.fig svg { width: 100%; height: auto; display: block }
+.stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; font-size: .78rem; color: var(--muted); border-top: 1px solid var(--line); padding-top: 10px }
+.stats div { display: grid; gap: 1px }
+.stats b { font-family: var(--f-mono); font-weight: 500; color: var(--fg); font-size: .9rem; font-variant-numeric: tabular-nums }
+.pattern { font-family: var(--f-mono); font-size: .78rem; color: var(--dim); overflow-wrap: anywhere }
+.wide { overflow-x: auto }
+.wide.long svg { min-width: 1500px }
+.wide.plan svg { min-width: 380px; max-width: 800px; width: 100%; height: auto; display: block; margin: 0 auto }
+.wide svg { min-width: 640px; width: 100%; height: auto; display: block }
+.cuts { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px }
+.cuts .card { gap: 4px }
+.cuts .card p { margin: 0; font-size: .92rem }
+.note { color: var(--muted); font-size: .92rem; margin: 0; max-width: 80ch }
+.note li { margin-bottom: 4px }
+.cfg { display: grid; grid-template-columns: minmax(0, 340px) minmax(0, 1fr); gap: 16px; align-items: start }
+@media (max-width: 760px) { .cfg { grid-template-columns: 1fr } }
+label { font-weight: 600; font-size: .9rem; display: block; margin-bottom: 4px }
+input[type=text], input[type=number] { width: 100%; font-family: var(--f-mono); font-size: .95rem; padding: 9px 10px; border: 1px solid var(--line); border-radius: 6px; background: var(--bg); color: var(--fg) }
+input:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px }
+.hint { font-size: .82rem; color: var(--muted); margin: 4px 0 0 }
+.err { color: var(--cut); font-size: .85rem; margin: 4px 0 0 }
+.row { display: flex; gap: 10px; flex-wrap: wrap }
+.row > div { flex: 1 1 120px }
+button { font-family: var(--f-body); font-weight: 600; font-size: .92rem; padding: 9px 14px; border-radius: 6px; border: 1px solid var(--accent); background: var(--accent); color: var(--card); cursor: pointer }
+button.ghost { background: transparent; color: var(--accent) }
+.card .rm { font-size: .78rem; padding: 3px 8px }
+.segwrap { overflow-x: auto }
+table.seg { width: 100%; border-collapse: collapse; font-size: .86rem; font-variant-numeric: tabular-nums }
+table.seg th { text-align: left; font-weight: 600; color: var(--muted); font-size: .76rem; border-bottom: 1px solid var(--line); padding: 4px 8px 4px 0 }
+table.seg td { padding: 4px 8px 4px 0; border-bottom: 1px solid var(--line); white-space: nowrap }
+table.seg td:nth-child(2), table.seg td:nth-child(3) { font-family: var(--f-mono) }
+table.seg tr.gate td { color: var(--accent); font-weight: 600 }
+.segcard { grid-column: 1 / -1 }
+footer { color: var(--muted); font-size: .82rem; border-top: 1px solid var(--line); padding-top: 12px }
+@media (max-width: 420px) { .stats { grid-template-columns: repeat(2, 1fr) } }
+.topnav { display:flex; gap:8px; flex-wrap:wrap; margin:14px 0 0 }
+.topnav a { padding:6px 12px; border:1px solid var(--dim, #8E8C88); border-radius:999px; text-decoration:none; color:var(--fg); font-size:.9rem }
+.topnav a[aria-current] { background:var(--fg); color:var(--bg) }
